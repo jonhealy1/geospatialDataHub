@@ -33,6 +33,7 @@ on browser: localhost:8000
 
 ```
 python manage.py createsuperuser
+on browser: localhost:8000/admin
 ```
 
-If you go to localhost:8000/admin after creating a superuser you can place events and geometric shapes on the map with some popup information. 
+After creating a superuser you can place events and geometric shapes on the map with some popup information. 
