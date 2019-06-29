@@ -1,8 +1,9 @@
 **geospatialDataHub project**
 
-Seed for project: <a href="https://www.youtube.com/playlist?list=PL7amXK4vKqATa_KrfQ3_tEF_ywAgAqWeJ"> This Playlist</a> 
 
 ## Set Up
+
+<a href="https://www.youtube.com/playlist?list=PL7amXK4vKqATa_KrfQ3_tEF_ywAgAqWeJ"> Seed tutorial</a> 
 
 <a href="https://postgis.net/install/"> Install postGIS</a> 
 
