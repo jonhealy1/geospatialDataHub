@@ -14,4 +14,13 @@ npm start
 
 Navigate to localhost:3000
 
-Voila
+--------------------------------------
+
+Docker:
+
+```
+docker-compose build
+docker-compose up
+```
+
+Navigate to localhost:3000
