@@ -2,6 +2,7 @@
 
 ## Getting Started
 * Clone this project to your machine
+* $ cd geospatialDataHub
 * $ docker-compose up
 
 ## Built With
