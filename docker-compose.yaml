@@ -14,10 +14,10 @@ services:
       - db
   client:
     build: frontend/
-    command: npm start
+    command: yarn run serve
     volumes:
       - .:/code/geospatialDataHub/frontend
     depends_on:
       - web
     ports:
-      - "3000:3000"
+      - "8080:8080"
