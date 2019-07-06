@@ -1,26 +1,22 @@
-https://wsvincent.com/django-rest-framework-react-tutorial/
+# CRUD Vue.js Django REST Framework
 
-In backend folder: 
+This is a case study app to explain how to build a CRUD app with Vue.js and Django REST Framework.
 
-```
-python manage.py runserver
-```
+https://medium.com/quick-code/crud-app-using-vue-js-and-django-516edf4e4217
 
-In frontend folder:
+Read the complete tutorial on dunebook.com -  https://www.dunebook.com/VueJs-and-Django-crud-tutorial/ 
 
-```
-npm start
-```
+### Prerequisites
+* Knowlegde of the Python & JavaScript Programming language.
+* Knowlegde of Vue.js, Django and Django REST Framework
 
-Navigate to localhost:3000
+## Getting Started
+* Clone this project to your machine
+* Follow the instructions [here](https://github.com/nioperas06/crud-vuejs-django-rest-framework/tree/master/subscription-api) to setup the Django REST Framework API.
+* Follow the instructions [here](https://github.com/nioperas06/crud-vuejs-django-rest-framework/tree/master/subscription-app) to setup the Vue.js application.
 
---------------------------------------
+## Built With
 
-Docker:
-
-```
-docker-compose build
-docker-compose up
-```
-
-Navigate to localhost:3000
+* [Django REST Framework](https://www.django-rest-framework.org/) - Django REST framework is a powerful and flexible toolkit for building Web APIs
+* [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework
+* [SQLite](https://www.sqlite.org/index.html) - Database
