@@ -6,6 +6,8 @@ COPY package.json ./
 
 RUN yarn install 
 
+RUN yarn remove @vue/eslint-config-prettier
+
 COPY . .
 
 EXPOSE 3000

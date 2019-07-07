@@ -23,6 +23,6 @@ export default new Router({
       path: "/index",
       name: "index",
       component: () => import("./components/Index.vue")
-    },
+    }
   ]
 });

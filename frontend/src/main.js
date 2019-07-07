@@ -5,10 +5,10 @@ import store from "./store";
 import BootstrapVue from "bootstrap-vue";
 import VeeValidate from 'vee-validate';
 
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap-vue/dist/bootstrap-vue.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 Vue.use(VeeValidate);
 
 Vue.config.productionTip = false;

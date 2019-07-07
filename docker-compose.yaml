@@ -3,6 +3,9 @@ version: '3'
 services:
   db:
     image: postgres
+    ports:
+      - "5432:5432"
+
   web:
     build: backend/
     command: python3 manage.py runserver 0.0.0.0:8000
@@ -10,8 +13,11 @@ services:
       - .:/code/geospatialDataHub/backend
     ports:
       - "8000:8000"
-    depends_on:
+    links:
       - db
+    environment:
+      DATABASE_URL: postgis://postgres:postgres@db:5432/postgres
+
   client:
     build: frontend/
     command: yarn run serve
