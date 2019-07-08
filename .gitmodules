@@ -1,0 +1,9 @@
+[submodule "geospatialdatahub/compose/compose/docker-postgis"]
+	path = geospatialdatahub/compose/compose/docker-postgis
+	url = https://github.com/kartoza/docker-postgis.git
+[submodule "geospatialdatahub/compose/docker-postgis"]
+	path = geospatialdatahub/compose/docker-postgis
+	url = https://github.com/kartoza/docker-postgis.git
+[submodule "geospatialdatahub/compose/local/docker-postgis"]
+	path = geospatialdatahub/compose/local/docker-postgis
+	url = https://github.com/kartoza/docker-postgis.git
