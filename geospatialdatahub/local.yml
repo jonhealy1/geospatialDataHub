@@ -3,6 +3,7 @@ version: '3'
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
+  postgres11-postgis2.5:
 
 services:
   django:
@@ -21,6 +22,25 @@ services:
       - "8000:8000"
     command: /start
 
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/local/docker-postgis/Dockerfile
+    image: postgres11-postgis2.5
+    container_name: postgres11-postgis2.5
+    volumes:
+      - postgres11-postgis2.5:/var/lib/postgresql/data
+      - ./backups:/opt/backups
+    networks:
+      - postgres_conn
+    ports:
+      - '5432:5432'
+    env_file: .env
+
+networks:
+  postgres_conn:
+    driver: bridge
+
 
   # postgres:
   #   image: kartoza/postgis
@@ -36,13 +56,13 @@ services:
   #   environment:
   #     - ALLOW_IP_RANGE=172.18.0.0/16
 
-  postgres:
-    build:
-      context: .
-      dockerfile: ./compose/local/docker-postgis/Dockerfile
-    image: geospatialdatahub_production_postgres
-    volumes:
-      - local_postgres_data:/var/lib/postgresql/data
-      - local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
+  # postgres:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/local/docker-postgis/Dockerfile
+  #   image: geospatialdatahub_production_postgres
+  #   volumes:
+  #     - local_postgres_data:/var/lib/postgresql/data
+  #     - local_postgres_data_backups:/backups
+  #   env_file:
+  #     - ./.envs/.local/.postgres
