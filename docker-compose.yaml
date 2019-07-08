@@ -1,8 +1,6 @@
 version: '3'
 
 services:
-  db:
-    image: geographica/postgis
 
   web:
     build: backend/
@@ -11,8 +9,6 @@ services:
       - .:/code/geospatialDataHub/backend
     ports:
       - "8000:8000"
-    depends_on:
-      - db
 
   client:
     build: frontend/
