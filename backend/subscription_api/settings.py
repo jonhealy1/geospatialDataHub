@@ -25,7 +25,7 @@ SECRET_KEY = '=2ubex9f$sjwq80g1w6hr*(u23sb1z%@#51)u+3--$8cnqhmof'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,11 +80,34 @@ WSGI_APPLICATION = 'subscription_api.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': 'geodjango',
-         'USER': 'know1especial',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+
+
+        #  'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        #  'NAME': 'gis',
+        #  'USER': 'know1especial',
+        #  'PASSWORD': 'password'
+        #  'NAME': 'postgres',
+        #  'USER': 'postgres',
+        #  'HOST': '172.17.0.1',
+        #  'PORT': '5432'
     },
+    # 'default': {
+    #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
+    #     'NAME': 'gis',
+    #     'USER': 'user001',
+    #     'PASSWORD': '123456789',
+    #     'HOST': 'db',
+    #     'PORT': '5445'
+    # }
 }
+# docker run --name=postgis -d -e POSTGRES_USER=gisuser -e POSTGRES_PASS=password 
+# -e POSTGRES_DBNAME=gis -e ALLOW_IP_RANGE=0.0.0.0/0 -p 5432:5432 
+# -v pg_data:/var/lib/postgresql --restart=always kartoza/postgis
+
+# docker run --name=postgis -d -p 5432:5432 -e POSTGRES_USER=gisuser -e POSTGRES_PASS=password -e POSTGRES_DBNAME=gis -v pg_data:/var/lib/postgresql --restart=always kartoza/postgis
 
 
 # Password validation
