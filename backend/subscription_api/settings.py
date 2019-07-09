@@ -98,20 +98,29 @@ WSGI_APPLICATION = 'subscription_api.wsgi.application'
 #DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 #DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
+# DATABASES = {
+#     'default': {
+#          'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#          'NAME': 'gis',
+#          'USER': 'know1especial',
+#          'PASSWORD': 'password',
+#          #'NAME': 'postgres',
+#          #'USER': 'postgres',
+#          'HOST': 'db',
+#          'PORT': '5432'
+#     }
+# }
+
 DATABASES = {
-    'default': {
-         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': 'gis',
-         'USER': 'know1especial',
-         'PASSWORD': 'password',
-         #'NAME': 'postgres',
-         #'USER': 'postgres',
-         'HOST': 'db',
-         'PORT': '5432'
-    }
+   "default": {
+       "ENGINE": "django.contrib.gis.db.backends.postgis",
+       "NAME": "gis",
+       "USER": "user001",
+       "PASSWORD": "123456789",
+       "HOST": "172.17.0.1",
+       "PORT": "5432",
+   }
 }
-
-
     # 'default': {
     #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
     #     'NAME': 'gis',
