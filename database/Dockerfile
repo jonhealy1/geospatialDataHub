@@ -20,8 +20,8 @@
 # COPY ./update-postgis.sh /usr/local/bin
 
 FROM kartoza/postgis
-VOLUME “/data”
-ENV POSTGRES_USER=gisuser
+#VOLUME “/data”
+ENV POSTGRES_USER=know1especial
 ENV POSTGRES_PASS=password
 ENV POSTGRES_DBNAME=gis
 EXPOSE 5432
