@@ -5,6 +5,6 @@ services:
     build: backend/
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code2/materials/nearbyshops/backend
+      - .:/code/geospatialDataHub/backend
     ports:
       - "8000:8000"
