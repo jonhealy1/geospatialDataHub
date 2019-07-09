@@ -1,15 +1,6 @@
-# geoSpatialDataHub
+# Make a Location-Based Web App With Django and GeoDjango
 
-## Getting Started
-* Clone this project to your machine
-* $ cd geospatialDataHub
-* $ docker-compose build
-* $ docker-compose up
-* navigate to: localhost:8080
-* make sure to scroll down page
+This folder contains the bonus material & example projects for our [Make a Location-Based Web App With Django and GeoDjango](https://realpython.com/location-based-app-with-geodjango-tutorial) tutorial on Real Python.
 
-## Built With
-* [Django REST Framework](https://www.django-rest-framework.org/) - Django REST framework is a powerful and flexible toolkit for building Web APIs
-* [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework
-* [SQLite](https://www.sqlite.org/index.html) - Database
-* [ArcGIS] (https://developers.arcgis.com/javascript/latest/sample-code/layers-pointcloud-portal/index.html) - ArcGIS
+Check out [Make a Location-Based Web App With Django and GeoDjango](https://realpython.com/location-based-app-with-geodjango-tutorial/) for more information. 
+
