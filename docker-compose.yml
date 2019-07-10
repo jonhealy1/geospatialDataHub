@@ -1,0 +1,34 @@
+version: "3"
+services:
+
+  web:
+    container_name: web
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    command: >
+      sh -c  "python sleep_for_db.py
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
+   
+
+  db:
+    container_name: db
+    image: kartoza/postgis:9.6-2.4
+    environment: 
+      - POSTGRES_USER=jamie
+      - POSTGRES_PASS=123456
+      - POSTGRES_DBNAME=gis
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+  
+  
+
+volumes:
+  db_data:
