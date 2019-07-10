@@ -13,7 +13,9 @@ services:
     depends_on:
       - db
     command: >
-      sh -c  "python /backend/sleep_for_db.py
+      sh -c  "python /backend/sleep_for_db.py &&
+              python /backend/manage.py makemigrations &&
+              python /backend/manage.py createsuperuser &&
               python /backend/manage.py migrate &&
               python /backend/manage.py runserver 0.0.0.0:8000"
 
