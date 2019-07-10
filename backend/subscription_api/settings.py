@@ -117,7 +117,7 @@ DATABASES = {
        "NAME": "gis",
        "USER": "user001",
        "PASSWORD": "123456789",
-       "HOST": "172.17.0.1",
+       "HOST": "db",
        "PORT": "5432",
    }
 }

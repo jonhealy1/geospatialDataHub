@@ -3,14 +3,19 @@ version: '3'
 services:
 
   web:
+    container_name: web
     build: backend/
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code/geospatialDataHub/backend
-    # depends_on:
-    #   - db
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      sh -c  "python /backend/sleep_for_db.py
+              python /backend/manage.py migrate &&
+              python /backend/manage.py runserver 0.0.0.0:8000"
 
   client:
     build: frontend/
@@ -33,17 +38,16 @@ services:
   #     - "5432:5432"
 
 
-  # db:
-  #   image: kartoza/postgis
-  #   environment: 
-  #     #- ALLOW_IP_RANGE=0.0.0.0/0
-  #     - POSTGRES_USER=user001
-  #     - POSTGRES_PASS=123456789
-  #     - POSTGRES_DBNAME=gis
-  #     - POSTGRES_PORT=5432
-
-
-    # ports:
-    #   - "5432:5432"
+  db:
+    container_name: db
+    image: kartoza/postgis:9.6-2.4
+    environment: 
+      - POSTGRES_USER=user001
+      - POSTGRES_PASS=123456789
+      - POSTGRES_DBNAME=gis
+    ports:
+      - "5432:5432"
+    volumes:
+      - .:/code/geospatialDataHub/database
     
 
