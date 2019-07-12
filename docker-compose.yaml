@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  db:
-    image: kartoza/postgis
+
   web:
+    container_name: web
     build: backend/
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
@@ -12,6 +12,15 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    command: >
+      sh -c " python /backend/sleep_for_db.py &&
+              python /backend/manage.py makemigrations &&
+              python /backend/manage.py createsuperuser &&
+              python /backend/manage.py migrate &&
+              python /backend/manage.py runserver 0.0.0.0:8000"
+    networks:
+      - postgres_network
+
   client:
     build: frontend/
     command: yarn run serve
@@ -19,5 +28,38 @@ services:
       - .:/code/geospatialDataHub/frontend
     depends_on:
       - web
+      - db
+    environment:
+      DB_URL: db:5432
     ports:
       - "8080:8080"
+
+  
+
+  # db:
+  #   build: database/
+  #   volumes:
+  #     - .:/code/geospatialDataHub/database
+  #   ports:
+  #     - "5432:5432"
+
+
+  db:
+    container_name: db
+    image: kartoza/postgis:9.6-2.4
+    environment: 
+      - POSTGRES_USER=user001
+      - POSTGRES_PASS=123456789
+      - POSTGRES_DBNAME=gis
+    ports:
+      - "5432:5432"
+    volumes:
+      - .:/code/geospatialDataHub/database
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    driver: bridge
+    
+

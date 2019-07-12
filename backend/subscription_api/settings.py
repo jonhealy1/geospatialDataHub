@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +25,7 @@ SECRET_KEY = '=2ubex9f$sjwq80g1w6hr*(u23sb1z%@#51)u+3--$8cnqhmof'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'corsheaders',
     'subscriptions',
     'rest_framework'
@@ -77,12 +78,63 @@ WSGI_APPLICATION = 'subscription_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+#         'NAME': 'gis',
+#         'USER': 'know1especial',
+#         'PASSWORD': 'password',
+#         'HOST': 'db',
+#         'PORT': '5432',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+#DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+#DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+
+# DATABASES = {
+#     'default': {
+#          'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#          'NAME': 'gis',
+#          'USER': 'know1especial',
+#          'PASSWORD': 'password',
+#          #'NAME': 'postgres',
+#          #'USER': 'postgres',
+#          'HOST': 'db',
+#          'PORT': '5432'
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+   "default": {
+       "ENGINE": "django.contrib.gis.db.backends.postgis",
+       "NAME": "gis",
+       "USER": "user001",
+       "PASSWORD": "123456789",
+       "HOST": "172.17.0.1",
+       "PORT": "5432",
+   }
 }
+    # 'default': {
+    #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
+    #     'NAME': 'gis',
+    #     'USER': 'user001',
+    #     'PASSWORD': '123456789',
+    #     'HOST': 'db',
+    #     'PORT': '5445'
+    # }
+#}
+# docker run --name=postgis -d -e POSTGRES_USER=gisuser -e POSTGRES_PASS=password 
+# -e POSTGRES_DBNAME=gis -e ALLOW_IP_RANGE=0.0.0.0/0 -p 5432:5432 
+# -v pg_data:/var/lib/postgresql --restart=always kartoza/postgis
+
+# docker run --name=postgis -d -p 5432:5432 -e POSTGRES_USER=gisuser -e POSTGRES_PASS=password -e POSTGRES_DBNAME=gis -v pg_data:/var/lib/postgresql --restart=always kartoza/postgis
 
 
 # Password validation

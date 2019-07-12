@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
     <div class="pt-5">
         <div v-if="subscriptions && subscriptions.length">

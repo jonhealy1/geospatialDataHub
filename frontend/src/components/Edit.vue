@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
     <div class="pt-5">
         <form @submit.prevent="update" method="post">
