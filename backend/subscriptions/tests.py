@@ -10,7 +10,7 @@ class SubscriptionListTestCase(APITestCase):
         data = {
             'name': 'Netflix',
             'description': 'Moovies',
-            'currency': 'EUR',
+            'image_type': 'LiDAR',
             'amount': 10,
             'first_billing_date': '12/03/2019',
             'billing_cycle': 'Monthly'

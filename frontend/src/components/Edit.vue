@@ -19,16 +19,16 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="currency">Currency</label>
+                <label for="image_type">Image Type</label>
                 <select
-                    name="currency"
+                    name="image_type"
                     class="form-control"
                     v-validate="'required'"
-                    id="currency"
-                    v-model="subscription.currency"
-                    :class="{'is-invalid': errors.has('subscription.currency') && submitted}">
-                    <option value="EUR">EUR</option>
-                    <option value="USD">USD</option>
+                    id="image_type"
+                    v-model="subscription.image_type"
+                    :class="{'is-invalid': errors.has('subscription.v') && submitted}">
+                    <option value="LiDAR">LiDAR</option>
+                    <option value="Satellite">Satellite</option>
                 </select>
                 <div class="invalid-feedback">
                     Please provide a valid currency.
