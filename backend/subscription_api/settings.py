@@ -74,6 +74,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'subscription_api.wsgi.application'
 
+# https://realpython.com/caching-in-django-with-redis/
+
+# Cache time to live is 15 minutes.
+CACHE_TTL = 60 * 15
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
