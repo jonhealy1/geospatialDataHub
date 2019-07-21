@@ -26,7 +26,8 @@ class Migration(migrations.Migration):
                 ('subregion', models.IntegerField(verbose_name='Sub-Region Code')),
                 ('lon', models.FloatField()),
                 ('lat', models.FloatField()),
-                ('mpoly', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)),
+                # ('mpoly', models.FloatField()),
+                # ('mpoly', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)),
             ],
         ),
     ]

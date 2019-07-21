@@ -9,6 +9,7 @@ class SubscriptionListTestCase(APITestCase):
         url = reverse('subscription-list')
         data = {
             'name': 'Netflix',
+            'area': 10,
             'description': 'Moovies',
             'image_type': 'LiDAR',
             'amount': 10,

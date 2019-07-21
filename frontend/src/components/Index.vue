@@ -11,7 +11,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">{{ subscription.name }}</h5>
-                            <p class="card-text">{{ subscription.description }}</p>
+                            <p class="card-text">{{ subscription.pop2005 }}</p>
                             <router-link :to="{name: 'edit', params: { id: subscription.id }}" class="btn btn-sm btn-primary">Edit</router-link>
                             <button class="btn btn-danger btn-sm ml-1" v-on:click="deleteSubscription(subscription)">Delete</button>
                         </div>

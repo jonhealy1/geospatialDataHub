@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
+                ('area', models.IntegerField()),
                 ('description', models.TextField()),
                 ('image_type', models.CharField(max_length=255)),
                 ('amount', models.IntegerField()),

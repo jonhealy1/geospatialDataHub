@@ -4,6 +4,7 @@ from django.contrib.gis.db import models
 # Create your models here.
 class Subscription(models.Model):
     name = models.CharField(max_length=255)
+    area = models.IntegerField()
     description = models.TextField()
     image_type = models.CharField(max_length=255)
     amount = models.IntegerField()
@@ -18,6 +19,8 @@ class WorldBorder(models.Model):
     # world borders shapefile.
     name = models.CharField(max_length=50)
     area = models.IntegerField()
+
+    # -----
     pop2005 = models.IntegerField('Population 2005')
     fips = models.CharField('FIPS Code', max_length=2)
     iso2 = models.CharField('2 Digit ISO', max_length=2)
@@ -29,7 +32,8 @@ class WorldBorder(models.Model):
     lat = models.FloatField()
 
     # GeoDjango-specific: a geometry field (MultiPolygonField)
-    mpoly = models.MultiPolygonField()
+    #mpoly = models.MultiPolygonField()
+    #mpoly = models.FloatField()
 
     # Returns the string representation of the model.
     def __str__(self):
