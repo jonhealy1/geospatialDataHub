@@ -1,0 +1,8 @@
+flask:
+    DEBUG: False
+    PG_HOST: localhost
+    PG_NAME: lopocs
+    PG_PORT: 5432
+    PG_USER: user001
+    PG_PASSWORD: 123456789
+    CACHE_DIR: /home/user/.cache/lopocs
