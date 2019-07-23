@@ -9,7 +9,7 @@ RUN pip3 install wheel
 RUN pip3 install psycopg2-binary
 
 RUN apt-get update &&\
-    apt-get install -y apt-utils gcc libpython-dev python-dev binutils libproj-dev gdal-bin libgdal-dev libyaml-dev
+    apt-get install -y apt-utils gcc libpython-dev python-dev binutils libproj-dev gdal-bin libgdal-dev libyaml-dev libpdal-dev pdal libpdal-plugin-python
     
 RUN pip3 install pyproj
 #RUN pip3 install PyYAML
