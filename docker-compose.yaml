@@ -36,9 +36,14 @@ services:
 
   lopocs:
     build: lopocs_new/
-    command: lopocs
+    command: lopocs check
+    restart: always
     volumes:
       - .:/code/geospatialDataHub/lopocs_new
+    depends_on:
+      - web
+      - db
+      - client
     ports:
       - "5001:5001"
 
