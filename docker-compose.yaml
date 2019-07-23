@@ -35,9 +35,9 @@ services:
       - "8080:8080"
 
   lopocs:
-    build: lopocs/
+    build: lopocs_new/
     volumes:
-      - .:/code/geospatialDataHub/lopocs
+      - .:/code/geospatialDataHub/lopocs_new
     ports:
       - "5001:5001"
 
