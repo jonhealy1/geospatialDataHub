@@ -10,8 +10,8 @@ services:
       - .:/code/geospatialDataHub/backend
     ports:
       - "8000:8000"
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
     command: >
       sh -c " python /backend/sleep_for_db.py &&
               python /backend/manage.py makemigrations &&
@@ -28,21 +28,38 @@ services:
       - .:/code/geospatialDataHub/frontend
     depends_on:
       - web
-      - db
+      # - db
     environment:
       DB_URL: db:5432
     ports:
       - "8080:8080"
 
+  self_db:
+    build: self_db/
+    #command: su - postgres
+    #command: createuser user001
+    #command: CREATE DATABASE gis;
+    environment: 
+      - POSTGRES_USER=user001
+      - POSTGRES_PASS=123456789
+      - POSTGRES_DBNAME=gis
+    volumes:
+      - .:/code/geospatialDataHub/self_db
+    ports:
+      - "5432:5432"
+
   lopocs:
     build: lopocs_new/
     command: lopocs check
+    # command: mkdir demos
+    # command: lopocs demo --work-dir demos/ --sample airport --cesium
+    # command: lopocs serve
     restart: always
     volumes:
       - .:/code/geospatialDataHub/lopocs_new
     depends_on:
       - web
-      - db
+      # - db
       - client
     ports:
       - "5001:5001"
@@ -62,19 +79,30 @@ services:
   #     - "5432:5432"
 
 
-  db:
-    container_name: db
-    image: kartoza/postgis:9.6-2.4
-    environment: 
-      - POSTGRES_USER=user001
-      - POSTGRES_PASS=123456789
-      - POSTGRES_DBNAME=gis
-    ports:
-      - "5432:5432"
-    volumes:
-      - .:/code/geospatialDataHub/database
-    networks:
-      - postgres_network
+  # db:
+  #   container_name: db
+  #   #build: kartoza/
+  #   image: bobleujr/pointcloudpostgis
+  #   #image: kartoza/postgis:9.6-2.4
+  #   #image: benoc008/pgpointcloud
+  #   # command: >
+  #   #   sh -c " apt-get install libpdal-plugin-pgpointcloud &&
+  #   #           createdb gis; &&
+  #   #           CREATE EXTENSION pointcloud;"
+  #   #command: apt-get install libpdal-plugin-pgpointcloud
+  #   #command: createdb gis;
+    
+  #   #command: CREATE EXTENSION pointcloud;
+  #   environment: 
+  #     - POSTGRES_USER=user001
+  #     - POSTGRES_PASS=123456789
+  #     - POSTGRES_DBNAME=gis
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - .:/code/geospatialDataHub/database
+  #   networks:
+  #     - postgres_network
 
   # lopocs:
   #   container_name: lopocs
