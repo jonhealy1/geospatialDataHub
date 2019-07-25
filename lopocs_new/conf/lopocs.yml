@@ -10,10 +10,10 @@
 flask:
     DEBUG: False
     PG_HOST: 172.17.0.1
-    PG_NAME: postgresondocker
+    PG_NAME: gis
     PG_PORT: 5432
-    PG_USER: postgresondocker
-    PG_PASSWORD: postgresondocker
+    PG_USER: user001
+    PG_PASSWORD: 123456789
     CACHE_DIR: /home/user/.cache/lopocs
 
 
