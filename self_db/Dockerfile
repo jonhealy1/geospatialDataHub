@@ -90,4 +90,20 @@ ADD setup-ssl.sh /
 ADD setup-user.sh /
 # ADD postgresql.conf /tmp/postgresql.conf
 RUN chmod +x /docker-entrypoint.sh
+
+RUN wget -O pointcloud.tar.gz "https://github.com/pgpointcloud/pointcloud/archive/master.tar.gz" \
+	&& apt-get install -y autoconf gcc git-core g++ zlib1g-dev libxml2-dev libpq-dev postgresql-server-dev-11 \
+    && mkdir -p /usr/src/pointcloud \
+    && tar \
+       --extract \
+       --file pointcloud.tar.gz \
+       --directory /usr/src/pointcloud \
+       --strip-components 1 \
+   #&& rm pointcloud.tar.gz \
+   && cd /usr/src/pointcloud \
+   && ./autogen.sh \
+   && ./configure \
+   && make \
+   && make install
+   
 ENTRYPOINT /docker-entrypoint.sh

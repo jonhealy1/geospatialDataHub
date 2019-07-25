@@ -48,8 +48,24 @@ services:
     ports:
       - "5432:5432"
 
+  # self_db:
+  #   #build: self_db/
+  #   image: becio/lopocs
+  #   #command: su - postgres
+  #   #command: createuser user001
+  #   #command: CREATE DATABASE gis;
+  #   environment: 
+  #     - POSTGRES_USER=user001
+  #     - POSTGRES_PASS=123456789
+  #     - POSTGRES_DBNAME=gis
+  #   volumes:
+  #     - .:/code/geospatialDataHub/self_db
+  #   ports:
+  #     - "5432:5432"
+
   lopocs:
     build: lopocs_new/
+    #image: becio/lopocs
     command: lopocs check
     # command: mkdir demos
     # command: lopocs demo --work-dir demos/ --sample airport --cesium
