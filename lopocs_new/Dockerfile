@@ -22,6 +22,9 @@ RUN pip3 install 'numpy==1.14.3'
 # RUN pip3 install GDAL
 RUN pip3 install -e .
 
+RUN mkdir demos
+RUN pip3 install psycopg2-binary
+
 ADD . /lopocs/
 # ENV PYTHONUNBUFFERED 1
 

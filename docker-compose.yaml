@@ -39,10 +39,16 @@ services:
     #command: su - postgres
     #command: createuser user001
     #command: CREATE DATABASE gis;
+    #command: psql -d lopocs -c 'create extension postgis'
+    command: >
+      bash -c "psql -d lopocs -c 'create extension postgis'
+      && psql -d lopocs -c 'create extension pointcloud'
+      && psql -d lopocs -c 'create extension pointcloud_postgis'
+      && psql -d lopocs -c 'create extension morton'"
     environment: 
       - POSTGRES_USER=user001
       - POSTGRES_PASS=123456789
-      - POSTGRES_DBNAME=gis
+      - POSTGRES_DBNAME=lopocs
     volumes:
       - .:/code/geospatialDataHub/self_db
     ports:
@@ -66,7 +72,12 @@ services:
   lopocs:
     build: lopocs_new/
     #image: becio/lopocs
-    command: lopocs check
+    #command: mkdir demos
+    command: >
+      bash -c "lopocs demo --work-dir demos/ --sample lyon --cesium
+      && lopocs serve"
+    #command: lopocs demo --work-dir lopocs_new/ --sample airport --cesium
+    #command: lopocs serve
     # command: mkdir demos
     # command: lopocs demo --work-dir demos/ --sample airport --cesium
     # command: lopocs serve
@@ -78,7 +89,7 @@ services:
       # - db
       - client
     ports:
-      - "5001:5001"
+      - "5000:5000"
 
   redis:
     image: redis

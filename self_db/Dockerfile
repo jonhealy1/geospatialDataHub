@@ -105,5 +105,19 @@ RUN wget -O pointcloud.tar.gz "https://github.com/pgpointcloud/pointcloud/archiv
    && ./configure \
    && make \
    && make install
-   
+
+RUN apt-get update; apt-get install -y git build-essential cmake make postgresql-server-dev-9.6
+
+RUN git clone https://github.com/Oslandia/pgmorton
+
+RUN cd pgmorton && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install
+
+#RUN sudo -u postgres psql
+#RUN psql -d lopocs -c 'create extension postgis'
+
 ENTRYPOINT /docker-entrypoint.sh
